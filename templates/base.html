@@ -55,7 +55,6 @@
                             <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
                         {% endfor %}
                         {% endif %}
-                        </ul>
                         {% if CUSTOM_RSS_FEED %}
                         <li><a href="{{ CUSTOM_RSS_FEED }}">RSS</a></li>
                         {% endif %}
