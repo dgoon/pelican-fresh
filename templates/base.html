@@ -9,13 +9,16 @@
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap-responsive.min.css" type="text/css" />
 
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/main.css" type="text/css" />
-        {% if FEED_ALL_ATOM %}
-        <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
+        {% if CUSTOM_RSS_FEED %}
+            <link href="{{ CUSTOM_RSS_FEED }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+        {% else %}
+            {% if FEED_ALL_ATOM %}
+            <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
+            {% endif %}
+            {% if FEED_ALL_RSS %}
+            <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+            {% endif %}
         {% endif %}
-        {% if FEED_ALL_RSS %}
-        <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
-        {% endif %}
-
         <script type="text/javascript">var switchTo5x=true;</script>
         <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
         <script type="text/javascript">
@@ -53,7 +56,10 @@
                         {% endfor %}
                         {% endif %}
                         </ul>
-
+                        {% if CUSTOM_RSS_FEED %}
+                        <li><a href="{{ CUSTOM_RSS_FEED }}">RSS</a></li>
+                        {% endif %}
+                        </ul>
                         {% include 'google_custom_search.html' %}
                     </div>
                 </nav>
