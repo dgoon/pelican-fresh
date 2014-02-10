@@ -20,10 +20,12 @@
 
                         <div class="entry-content">
                             {% include 'article_infos.html' %}
-                            {{ article.summary }}
-                            <p class="readmore">
-                                <a class="btn btn-info" href="{{ SITEURL }}/{{ article.url }}">Read more...</a>
-                            </p>
+                            {% if SUMMARIZE_ARTICLE %}
+                                {{ article.summary }}
+                                <p class="readmore">
+                                    <a class="btn btn-info" href="{{ SITEURL }}/{{ article.url }}">Read more...</a>
+                                </p>
+                            {% endif %}
                         </div><!-- /.entry-content -->
 
                         <hr/>
